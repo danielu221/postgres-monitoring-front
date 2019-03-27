@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ActivityPageComponent } from './modules/activity/activity-page/activity-page.component';
+import { StatementPageComponent } from './modules/statements/statement-page/statement-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'activity', component: ActivityPageComponent },
+  { path: 'statements', component: StatementPageComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
