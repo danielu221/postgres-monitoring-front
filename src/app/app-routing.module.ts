@@ -4,6 +4,10 @@ import { ActivityPageComponent } from './modules/activity/activity-page/activity
 import { StatementPageComponent } from './modules/statements/statement-page/statement-page.component';
 
 const routes: Routes = [
+  { path: '',
+    redirectTo: '/activity',
+    pathMatch: 'full'
+  },
   { path: 'activity', component: ActivityPageComponent },
   { path: 'statements', component: StatementPageComponent },
 ];

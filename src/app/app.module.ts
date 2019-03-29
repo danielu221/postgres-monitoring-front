@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './shared/modules/material.module';
 import { StatementsModule } from './modules/statements/statements.module';
 import { ActivityModule } from './modules/activity/activity.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ActivityModule } from './modules/activity/activity.module';
     BrowserAnimationsModule,
     CustomMaterialModule,
     ActivityModule,
-    StatementsModule
+    StatementsModule,
+   HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

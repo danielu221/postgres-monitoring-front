@@ -1,0 +1,27 @@
+table{
+    width:100%;
+    .mat-header-row{
+        background-color:#673ab7;
+        .mat-header-cell{
+            font-size:18px;
+            color:white;
+            text-align: center;
+        }
+    }
+    .mat-cell{
+        text-align: center;
+        color: #373d3f;;
+        font-size:14px;
+    }
+    tr:nth-child(even){
+        background-color:#efebf7
+    }
+    .query-col{
+        width:50%;
+        padding-right:15px;
+    };
+}
+
+.filter-field{
+    width:50%
+}
