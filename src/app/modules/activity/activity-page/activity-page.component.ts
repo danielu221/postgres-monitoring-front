@@ -37,11 +37,12 @@ export class ActivityPageComponent implements OnInit {
 
   displayedColumns: string[] = [
     'query',
-    'calls',
-    'rows',
-    'min_time',
-    'max_time',
-    'mean_time'
+    'pid',
+    'usesysid',
+    'application_name',
+    'client_addr',
+    'client_port',
+    'state'
   ];
   constructor(private activityService: ActivityService) {}
 

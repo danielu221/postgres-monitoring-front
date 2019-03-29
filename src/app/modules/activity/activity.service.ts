@@ -10,6 +10,6 @@ export class ActivityService {
   constructor(private http:HttpClient) { }
 
   getPgActivity(){
-    return this.http.get(`${this.apiUrl}/stats`);
+    return this.http.get(`${this.apiUrl}/activity`);
   }
 }

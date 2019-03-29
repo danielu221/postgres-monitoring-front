@@ -1,8 +1,9 @@
 export interface IActivityRes{
-    calls: string;
-    max_time:number;
-    min_time:number;
-    mean_time:number;
-    query:string;
-    rows:string
+    query:string
+    pid:number
+    usesysid:number
+    application_name:string
+    client_addr:string
+    client_port:number
+    state:string
 }
