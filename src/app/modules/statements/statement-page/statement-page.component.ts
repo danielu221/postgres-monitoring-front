@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { StatementsService } from '../statements.service';
+import { Subscription, timer } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 export interface PeriodicElement {
   name: string;
@@ -27,12 +29,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './statement-page.component.html',
   styleUrls: ['./statement-page.component.scss']
 })
-export class StatementPageComponent implements OnInit {
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
+export class StatementPageComponent implements OnInit,OnDestroy {
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  subscription: Subscription;
 
   displayedColumns: string[] = [
     'query',
@@ -46,13 +48,20 @@ export class StatementPageComponent implements OnInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
-    this.statementService.getPgStatements().subscribe((data: Array<any>) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    });
+    this.subscription = timer(0, 10000)
+      .pipe(switchMap(() => this.statementService.getPgStatements()))
+      .subscribe((res: Array<any>) => {
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

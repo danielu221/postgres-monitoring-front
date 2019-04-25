@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivityService } from '../activity.service';
 import { IActivityRes } from '../interfaces/IActivityRes';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { timer, Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 export interface PeriodicElement {
   name: string;
@@ -28,12 +30,11 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './activity-page.component.html',
   styleUrls: ['./activity-page.component.scss']
 })
-export class ActivityPageComponent implements OnInit {
-  // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  // dataSource = ELEMENT_DATA;
+export class ActivityPageComponent implements OnInit,OnDestroy {
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  subscription: Subscription;
 
   displayedColumns: string[] = [
     'query',
@@ -48,13 +49,19 @@ export class ActivityPageComponent implements OnInit {
 
   ngOnInit() {}
   ngAfterViewInit() {
-    this.activityService.getPgActivity().subscribe((data: Array<any>) => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-    });
+    this.subscription = timer(0, 10000)
+      .pipe(switchMap(() => this.activityService.getPgActivity()))
+      .subscribe((res: Array<any>) => {
+        console.log(res)
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
   }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
