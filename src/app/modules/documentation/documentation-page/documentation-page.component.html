@@ -1,0 +1,23 @@
+<h2>App description</h2>
+
+Application allows to monitor PostgreSQL database. Each 10 seconds GET request
+is being made and data displayed in "Activity" and "Statements" bookmark is
+being refreshed. Below technologies were used for implementation:
+<ul>
+  <li>Angular</li>
+  <li>NodeJS with Express</li>
+  <li>PostgreSQL with sample database <a href="http://www.postgresqltutorial.com/postgresql-sample-database/">(link)</a></li>
+</ul>
+<h2>Definitions</h2>
+<strong>Statements</strong> - represents most important columns from
+pg_stat_statements view. The pg_stat_statements module provides a means for
+tracking execution statistics of all SQL statements executed by a server. The
+module must be loaded by adding pg_stat_statements to shared_preload_libraries
+in postgresql.conf, because it requires additional shared memory.
+<br>
+<br>
+<strong>Activity</strong> - showing information related to the current activity
+of that process, such as state and current query.
+<h2>Authors</h2>
+<p>Mateusz Danieluk</p>
+<p>Arkadiusz Gotfryd</p>

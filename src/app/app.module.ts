@@ -3,17 +3,15 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './shared/modules/material.module';
 import { StatementsModule } from './modules/statements/statements.module';
 import { ActivityModule } from './modules/activity/activity.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { DocumentationModule } from './modules/documentation/documentation.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,9 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
     CustomMaterialModule,
     ActivityModule,
     StatementsModule,
-   HttpClientModule
+    HttpClientModule,
+    DocumentationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
