@@ -17,5 +17,5 @@ PostgreSQL with sample database (link)
 4. Navigate to `http://localhost:4200/`.
 
 ## Authors
-Mateusz Danieluk
-Arkadiusz Gotfryd
+- Mateusz Danieluk
+- Arkadiusz Gotfryd
