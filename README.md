@@ -1,4 +1,4 @@
-# PostrgesMonitoringBackend
+# PostrgesMonitoring
 
 Application allows to monitor PostgreSQL database. Each 10 seconds GET request is being made and data displayed in "Activity" and "Statements" bookmark is being refreshed. Below technologies were used for implementation:
 - **Frontend** [Link to repo](https://github.com/danielu221/postgres-monitoring-front):
