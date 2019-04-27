@@ -4,7 +4,7 @@ Application allows to monitor PostgreSQL database. Each 10 seconds GET request i
 - Angular 7
 - Angular material
 
-- **Backend** [Link to repo](https://github.com/danielu221/postgres-monitoring):
+- **Backend** [Link to repo](https://github.com/danielu221/postgres-monitoring-backend):
 - NodeJS with Express
 - PostgreSQL with sample database (link)
 
