@@ -15,3 +15,7 @@ PostgreSQL with sample database (link)
 2. Run  `npm install` to install dependencies for frontend.
 3. Run `npm start` for a dev server. 
 4. Navigate to `http://localhost:4200/`.
+
+## Authors
+Mateusz Danieluk
+Arkadiusz Gotfryd
